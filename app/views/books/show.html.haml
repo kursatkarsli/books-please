@@ -2,17 +2,16 @@
 
 .row
   .col-md-4
-    = image_tag "http://via.placeholder.com/160x220"
-  .col-md-8
+    = image_tag "#{@book.slug}-352x500.jpg"
+  .col-md-6
     %dl.row
-      %dt.col-md-3 Title
-      %dd.col-md-9= @book.title
-      %dt.col-md-3 Author
-      %dd.col-md-9= @book.author
-      %dt.col-md-3 Description
-      %dd.col-md-9
-        %p @book.description
-      %dt.col-md-3 Pages
-      %dd.col-md-9= @book.pages
-      %dt.col-md-3 Medium
-      %dd.col-md-9= @book.medium
+      %dt.col-md-2 Title
+      %dd.col-md-10= @book.title
+      %dt.col-md-2 Author
+      %dd.col-md-10= @book.author
+      %dt.col-md-2 Description
+      %dd.col-md-10= @book.description.html_safe
+      %dt.col-md-2 Pages
+      %dd.col-md-10= @book.pages
+      %dt.col-md-2 Medium
+      %dd.col-md-10= t_enum @book, :medium

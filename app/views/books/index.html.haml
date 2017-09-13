@@ -3,9 +3,9 @@
 - @books.in_groups_of(4, false) do |group|
   .row.pb-4
     - group.each do |book|
-      .col-md-3
+      .book.m-2
         .card
           = link_to book_path(book) do
-            = image_tag "http://via.placeholder.com/160x220"
-            .card-img-overlay
+            = image_tag "#{book.slug}-352x500.jpg", width: 160
+            -# .card-img-overlay
               %p.card-title= book.title
