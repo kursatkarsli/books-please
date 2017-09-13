@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def index
-    @books = (1..10).map { Book.new title: "Książeczka", author: "Autorka" }
+    @books = Book.all
   end
 
 end
