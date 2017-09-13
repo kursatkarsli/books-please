@@ -5,6 +5,7 @@
     - group.each do |book|
       .col-md-3
         .card
-          %img.card-img-top(src="http://via.placeholder.com/160x220" alt="Placeholder")
-          .card-img-overlay
-            %p.card-title= book.title
+          = link_to book_path(book) do
+            = image_tag "http://via.placeholder.com/160x220"
+            .card-img-overlay
+              %p.card-title= book.title
