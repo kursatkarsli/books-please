@@ -62,5 +62,8 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 
 # Use Haml for generating views 
 gem 'haml'
-# Use Bootstrap as CSS framework
+# Use jQuery as a JS framework
+gem 'jquery-rails'
+
+# Use Bootstrap as a CSS framework
 gem 'bootstrap', '~> 4.0.0.beta'
