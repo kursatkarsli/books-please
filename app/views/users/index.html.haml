@@ -1,0 +1,6 @@
+%h1 Friends
+
+- @users.each do |user|
+  %p
+    = image_tag user.avatar_img, class: 'avatar'
+    = user.name

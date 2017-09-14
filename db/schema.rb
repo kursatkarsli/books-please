@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913141440) do
+ActiveRecord::Schema.define(version: 20170914155301) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20170913141440) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "avatar_img"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
