@@ -1,4 +1,4 @@
-books = Book.create([
+books = Book.create [
   {
     title: 'Pani Einstein',
     author: 'Marie Benedict',
@@ -69,6 +69,15 @@ books = Book.create([
     medium: :kindle,
     description: '<p>Miłość, pożądanie, zdrada i mroczne sekrety bogatych kupców w siedemnastowiecznym Amsterdamie.</p><p>Jest październikowe popołudnie 1686 roku, gdy osiemnastoletnia Nella Oortman staje na progu wielkiego domu w bogatej dzielnicy Amsterdamu. Miesiąc wcześniej poślubiła zamożnego kupca, Johannesa Brandta i teraz przybywa, by wprowadzić się do męża. Lecz zamiast niego wita ją mrukliwa i niemiła Marin, siostra Johannesa. Gdy ten w końcu się pojawi, nie poświęci żonie zbyt wiele czasu. Podaruje jej jednak niezwykły prezent: okazałą drewnianą replikę domu, którą umebluje dla niej tajemniczy miniaturzysta. Podziw dla jego zręczności szybko zastąpi lęk, gdyż drobiazgi wyposażenia i figurki przedstawiające domowników nie tylko odsłaniają ich tajemnice, ale i antycypują straszne wydarzenia, które wkrótce staną się ich udziałem. Skąd artysta tyle wie o sekretach rodziny Brandtów? Czyż nie są marionetkami w jego rękach, skoro zna ich przyszłość? I kim jest ów nieuchwytny twórca?</p><p>Pasjonująca powieść Jessie Burton, absolwentki uniwersytetu w Oksfordzie, przeniesie nas w czasy złotego wieku Holandii, rozkwitu handlu i sztuki i pozwoli zajrzeć w serca postaci, które spoglądają na nas z obrazów Vermeera, Halsa i Rembrandta... Książka, która zrobiła furorę wśród wydawców na Targach Książki we Frankfurcie, ukazuje się w 30 krajach.</p>'
   },
-])
+]
 
 puts "#{books.count} books created"
+
+users = User.create [
+  {name: 'Zosia', avatar_img: 'zosia.jpg'},
+  {name: 'Marysia', avatar_img: 'marysia.jpg'},
+  {name: 'Jasiu', avatar_img: 'jasiu.jpg'},
+  {name: 'Michał', avatar_img: 'michal.jpg'}
+]
+
+puts "#{users.count} users created"
