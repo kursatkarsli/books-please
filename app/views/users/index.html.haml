@@ -3,4 +3,4 @@
 - @users.each do |user|
   %p
     = image_tag user.avatar_img, class: 'avatar'
-    = user.name
+    = link_to user.name, user_path(user)
