@@ -2,7 +2,19 @@
 
 .row
   .col-md-4.col-xs-12
-    = image_tag "#{@book.slug}-352x500.jpg", class: "my-2 w-100"
+    %p
+      = image_tag "#{@book.slug}-352x500.jpg", class: "my-2 w-100"
+    %p
+      = button_tag id: "statusBtn", class: "btn btn-success" do
+        %i.fa.fa-book
+        %span Want to read
+    %p
+      = link_to toggle_favourite_book_path(@book) do
+        - if @interest.is_favourite
+          %i.fa.fa-star.fa-2x.text-warning
+        - else
+          %i.fa.fa-star-o.fa-2x.text-warning
+
   .col-md-6.col-xs-12
     %dl.row
       %dt.col-md-2 Title
