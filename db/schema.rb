@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20170915092618) do
   create_table "interests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
-    t.boolean "is_owner"
-    t.integer "status"
+    t.boolean "is_owner", default: false
+    t.integer "status", default: 0
     t.integer "status_position"
-    t.boolean "is_favourite"
+    t.boolean "is_favourite", default: false
     t.integer "favourite_position"
     t.integer "rank"
     t.text "comment"
