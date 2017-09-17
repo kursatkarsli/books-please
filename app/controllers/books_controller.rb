@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :toggle]
   def index
-    @books = Book.all
+    @books = Book.includes(:interests)
+        .where(interests: {user: current_user})
+      .or(Book.includes(:interests)
+        .where(interests: {id: nil}))
+      .references(:interests)
     @favs = Book.favourites(current_user)
   end
 
