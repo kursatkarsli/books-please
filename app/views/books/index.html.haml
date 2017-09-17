@@ -1,5 +1,6 @@
-%h2 Favourite books
-= render 'shared/book-grid', books: @favs
+-if @favs.count > 0
+  %h2 Favourite books
+  = render 'shared/book-grid', books: @favs
 
 %h2 All books
 = render 'shared/book-grid', books: @books

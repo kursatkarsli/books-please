@@ -2,5 +2,10 @@
 
 = image_tag @user.avatar_img, alt: @user.name
 
-%h2 Favourite books
-= render 'shared/book-grid', books: @favs
+-if @favs.count > 0
+  %h2 Favourite books
+  = render 'shared/book-grid', books: @favs
+
+-if @reads.count > 0
+  %h2 Is reading now
+  = render 'shared/book-grid', books: @reads
