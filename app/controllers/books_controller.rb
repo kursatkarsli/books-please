@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :toggle_favourite]
+  before_action :set_book, only: [:show, :toggle]
   def index
     @books = Book.all
     @favs = Book.favourites(current_user)
@@ -7,9 +7,21 @@ class BooksController < ApplicationController
 
   def show; end
 
-  def toggle_favourite
-    @interest.toggle :is_favourite
-    @interest.save
+  def toggle
+    case
+    when params[:favourite]
+      @interest.toggle! :is_favourite
+    when params[:read_list]
+      @interest.read_list!
+    when params[:reading]
+      @interest.reading!
+    when params[:complete]
+      @interest.completed!
+    when params[:reject]
+      @interest.rejected!
+    when params[:forget]
+      @interest.uninterested!
+    end
 
     redirect_to @book
   end
