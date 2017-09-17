@@ -47,6 +47,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use sqlite3 as the database for Active Record in development
   gem 'sqlite3'
+  gem 'rack-livereload'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 group :production do
