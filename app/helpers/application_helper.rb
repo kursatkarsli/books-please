@@ -35,7 +35,7 @@ module ApplicationHelper
         concat toggle_link({ reject: true }, 'danger', 'close', 'Cancelled reading')
       end
     when :completed, :rejected
-      toggle_link({ forget: true }, 'secondary', 'check', 'Forget the book')
+      toggle_link({ forget: true }, 'secondary', 'trash', 'Forget the book')
     end
   end
 
@@ -50,7 +50,7 @@ module ApplicationHelper
   end
 
   def toggle_link(param, color, icon_name, text)
-    style = "btn btn-#{color}"
+    style = "btn btn-#{color} m-1"
     link_to toggle_book_path(@book, param), class: style do
       concat icon icon_name
       concat ' '

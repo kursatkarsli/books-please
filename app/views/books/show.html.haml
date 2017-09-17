@@ -1,15 +1,15 @@
-%h1= @book.title
+%h2= @book.title
 
 .row
   .col-md-4.col-xs-12
-    %div
-      = image_tag "#{@book.slug}-352x500.jpg", class: "my-2 w-100"
+    %div.book-image
+      = image_tag "#{@book.slug}-352x500.jpg", alt: @book.title, class: "w-100"
       %span.favourite= favourite_link
       %span.status= status_tag
 
-    %div.m-2= toggle_status_link
+    %div.center.m-2= toggle_status_link
 
-  .col-md-6.col-xs-12
+  .col-md-8.col-xs-12
     %dl.row
       %dt.col-md-2 Title
       %dd.col-md-10= @book.title
