@@ -13,7 +13,7 @@ module ApplicationHelper
   def status_tag
     case @interest.status.to_sym
     when :read_list
-      badge 'To read', 'secondary'
+      badge 'To read', 'primary'
     when :reading
       badge 'Currently reading', 'primary'
     when :completed
@@ -26,7 +26,7 @@ module ApplicationHelper
   def toggle_status_link
     case @interest.status.to_sym
     when :uninterested
-      toggle_link({ read_list: true }, 'secondary', 'book', 'Want to read')
+      toggle_link({ read_list: true }, 'primary', 'book', 'Want to read')
     when :read_list
       toggle_link({ reading: true }, 'primary', 'newspaper-o', 'Started reading')
     when :reading
