@@ -2,11 +2,12 @@
 
 .row
   .col-md-4.col-xs-12
-    %p
+    %div
       = image_tag "#{@book.slug}-352x500.jpg", class: "my-2 w-100"
-    %div.m-2= status_tag
+      %span.favourite= favourite_link
+      %span.status= status_tag
+
     %div.m-2= toggle_status_link
-    %div.m-2= favourite_link
 
   .col-md-6.col-xs-12
     %dl.row
