@@ -5,9 +5,9 @@ class BooksController < ApplicationController
 
     @favs = Book.favourites(user).select(:title, :slug)
 
-    @books = Book.joins(:interests)
+    @books = Book.left_outer_joins(:interests)
     .where(interests: {user: user})
-      .or(Book.joins(:interests)
+      .or(Book.left_outer_joins(:interests)
     .where(interests: {id: nil}))
     .select(:title, :slug)
   end
