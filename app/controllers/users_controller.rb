@@ -6,12 +6,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    @favs = Book.favourites(@user)
+    @reads = Book.reading(@user)
   end
 
   private
-  
-    def set_user
-      @user = User.find(params[:id])
-    end
 
+  def set_user
+    @user = User.find(params[:id])
+  end
 end

@@ -1,8 +1,7 @@
-%h1 All books
+- @favs.load
+- if @favs.length > 0
+  %h2 Favourite books
+  = render 'shared/book-grid', books: @favs
 
-.row
-  - @books.each do |book|
-    .book.m-2
-      .card
-        = link_to book_path(book) do
-          = image_tag "#{book.slug}-352x500.jpg", class: 'd-sm-block'
+%h2 All books
+= render 'shared/book-grid', books: @books

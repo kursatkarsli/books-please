@@ -9,13 +9,37 @@
   &:hover {
     border-color: #b8daff;
   }
+
+  & img {
+    width: 100%;
+  
+    @include media-breakpoint-up(sm) {
+      width: 160px;
+    }
+  }
 }
 
-.book img {
-  width: 100%;
+.book-image {
+  position: relative;
+  padding-top: 0.5rem;
+}
 
-  @include media-breakpoint-up(sm) {
-    width: 160px;
-  }
+.status {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.favourite {
+  position: absolute;
+  top: -0.5rem;
+  left: -0.75rem;
+}
+
+.center
+{
+  text-align: center;
 }
 

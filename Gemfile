@@ -47,6 +47,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use sqlite3 as the database for Active Record in development
   gem 'sqlite3'
+  gem 'rack-livereload'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 group :production do
@@ -64,6 +66,7 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.1'
 gem 'haml'
 # Use jQuery as a JS framework
 gem 'jquery-rails'
-
 # Use Bootstrap as a CSS framework
 gem 'bootstrap', '~> 4.0.0.beta'
+# Use Font Awesome
+gem 'font-awesome-sass'

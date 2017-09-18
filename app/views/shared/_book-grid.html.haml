@@ -1,0 +1,6 @@
+.row
+  - books.each do |book|
+    .book.m-2
+      .card
+        = link_to book_path(book) do
+          = image_tag "#{book.slug}-352x500.jpg", class: 'd-sm-block'
