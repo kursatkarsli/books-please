@@ -1,4 +1,5 @@
--if @favs.count > 0
+- @favs.load
+- if @favs.length > 0
   %h2 Favourite books
   = render 'shared/book-grid', books: @favs
 

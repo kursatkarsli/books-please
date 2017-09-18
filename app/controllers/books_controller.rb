@@ -1,29 +1,31 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :toggle]
   def index
-    @books = Book.includes(:interests)
-        .where(interests: {user: current_user})
-      .or(Book.includes(:interests)
-        .where(interests: {id: nil}))
-      .references(:interests)
-    @favs = Book.favourites(current_user)
+    user = current_user
+
+    @favs = Book.favourites(user).select(:title, :slug)
+
+    @books = Book.joins(:interests)
+    .where(interests: {user: user})
+      .or(Book.joins(:interests)
+    .where(interests: {id: nil}))
+    .select(:title, :slug)
   end
 
   def show; end
 
   def toggle
-    case
-    when params[:favourite]
+    if params[:favourite]
       @interest.toggle! :is_favourite
-    when params[:read_list]
+    elsif params[:read_list]
       @interest.read_list!
-    when params[:reading]
+    elsif params[:reading]
       @interest.reading!
-    when params[:complete]
+    elsif params[:complete]
       @interest.completed!
-    when params[:reject]
+    elsif params[:reject]
       @interest.rejected!
-    when params[:forget]
+    elsif params[:forget]
       @interest.uninterested!
     end
 
@@ -34,7 +36,9 @@ class BooksController < ApplicationController
 
   def set_book
     @book = Book.friendly.find(params[:id])
-    @interest = @book.interests.find_by user: current_user
-    @interest ||= Interest.create book: @book, user: current_user
+    @interest = @book.interests.find_or_create_by(user: current_user) do |interest|
+      interest.book = @book
+      user = current_user
+    end
   end
 end
