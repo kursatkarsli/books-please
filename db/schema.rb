@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915092618) do
+ActiveRecord::Schema.define(version: 20170920093640) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20170915092618) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "slug"
+    t.string "large_image_url"
+    t.string "small_image_url"
     t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 

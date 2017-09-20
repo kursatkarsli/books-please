@@ -1,18 +1,55 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :toggle]
+  before_action :set_book, only: [:show, :destroy, :toggle]
   def index
     user = current_user
 
-    @favs = Book.favourites(user).select(:title, :slug)
-
-    @books = Book.left_outer_joins(:interests)
-    .where(interests: {user: user})
-      .or(Book.left_outer_joins(:interests)
-    .where(interests: {id: nil}))
-    .select(:title, :slug)
+    @favs = Book.favourites(user)
+    @books = Book.all
   end
 
   def show; end
+
+  def new
+    params[:query] ||= 'Ekożona'
+
+    client = Goodreads.new
+    search = client.search_books(params[:query])
+    results = search.results.work
+
+    @works = results.is_a?(Array) ? results : [results]
+  end
+
+  def create
+    good_id = params[:gr_id]
+    client = Goodreads.new
+    good_book = client.book(good_id)
+    good_author = good_book.authors.author
+
+    @book = Book.new(
+      title: good_book.title,
+      author: good_author.is_a?(Array) ?
+        good_author.first.name :
+        good_author.name,
+      pages: good_book.num_pages,
+      description: good_book.description,
+      large_image_url: good_book.image_url.gsub!(/m(?=\/\d+)/, 'l'),
+      small_image_url: good_book.image_url,
+    )
+
+    if @book.save
+      redirect_to @book
+    else
+      render 'new'
+    end
+  end
+
+  def destroy
+    if @book.destroy
+      redirect_to books_path
+    else
+      redirect_to @book
+    end
+  end
 
   def toggle
     if params[:favourite]

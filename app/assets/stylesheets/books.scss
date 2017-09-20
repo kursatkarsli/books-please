@@ -38,8 +38,10 @@
   left: -0.75rem;
 }
 
-.center
-{
+.center {
   text-align: center;
 }
 
+.proposal td {
+  vertical-align: middle !important;
+}

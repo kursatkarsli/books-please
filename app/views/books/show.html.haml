@@ -3,7 +3,7 @@
 .row
   .col-md-4.col-xs-12
     %div.book-image
-      = image_tag "#{@book.slug}-352x500.jpg", alt: @book.title, class: "border border-secondary w-100"
+      = image_tag @book.large_image_url, alt: @book.title, class: "border border-secondary w-100"
       %span.favourite= favourite_link
       %span.status= status_tag
 
@@ -17,9 +17,26 @@
       %dd.col-md-10= @book.author
       %dt.col-md-2 Pages
       %dd.col-md-10= @book.pages
-      %dt.col-md-2 Medium
-      %dd.col-md-10= t_enum @book, :medium
-      %dt.col-md-2 Description
-      %dd.mx-3.small.text-justify= @book.description.html_safe
+      %dd.mx-3.text-justify= @book.description.html_safe
 
-    = link_to "Back", books_path
+    .row
+      = link_to "Delete book", '', class: 'btn btn-danger mx-3', 'data-toggle': :modal, 'data-target': '#deleteModal'
+
+    -# .row
+    -#   = link_to "Back", books_path, class: 'm-2'
+
+.modal.fade#deleteModal
+  .modal-dialog{role: :document}
+    .modal-content
+      .modal-header
+        %h5.modal-title= 'Delete the book'
+        %button.close{type: :button, 'data-dismiss': :modal, 'aria-label': 'Close'}
+          %span{'aria-hidden': :true} &times;
+      .modal-body
+        %p
+          Are you sure you want to delete&nbsp;
+          %strong>= @book.title
+          ?
+      .modal-footer
+        = link_to "Delete book", book_path(@book), method: :delete, class: 'btn btn-danger'        
+        %button.btn.btn-secondary{type: :button, 'data-dismiss': :modal} Cancel
