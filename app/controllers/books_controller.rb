@@ -4,11 +4,7 @@ class BooksController < ApplicationController
     user = current_user
 
     @favs = Book.favourites(user)
-
-    @books = Book.left_outer_joins(:interests)
-    .where(interests: {user: user})
-      .or(Book.left_outer_joins(:interests)
-    .where(interests: {id: nil}))
+    @books = Book.all
   end
 
   def show; end
