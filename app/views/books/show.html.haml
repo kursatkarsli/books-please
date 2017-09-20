@@ -21,7 +21,23 @@
       %dd.mx-3.small.text-justify= @book.description.html_safe
 
     .row
-      = link_to "Delete book", book_path(@book), method: :delete, class: 'btn btn-danger m-2'
+      = link_to "Delete book", '', class: 'btn btn-danger m-2', 'data-toggle': :modal, 'data-target': '#deleteModal'
 
-    .row
-      = link_to "Back", books_path, class: 'm-2'
+    -# .row
+    -#   = link_to "Back", books_path, class: 'm-2'
+
+.modal.fade#deleteModal
+  .modal-dialog{role: :document}
+    .modal-content
+      .modal-header
+        %h5.modal-title= 'Deleting the book'
+        %button.close{type: :button, 'data-dismiss': :modal, 'aria-label': 'Close'}
+          %span{'aria-hidden': :true} &times;
+      .modal-body
+        %p
+          Are you sure you want to delete&nbsp;
+          %strong>= @book.title
+          ?
+      .modal-footer
+        = link_to "Delete book", book_path(@book), method: :delete, class: 'btn btn-danger'        
+        %button.btn.btn-secondary{type: :button, 'data-dismiss': :modal} Cancel
