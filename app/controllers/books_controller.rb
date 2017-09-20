@@ -1,9 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :destroy, :toggle]
   def index
-    user = current_user
-
-    @favs = Book.favourites(user)
+    @favs = Book.favourites(current_user)
     @books = Book.all
   end
 
@@ -75,7 +73,7 @@ class BooksController < ApplicationController
     @book = Book.friendly.find(params[:id])
     @interest = @book.interests.find_or_create_by(user: current_user) do |interest|
       interest.book = @book
-      user = current_user
+      interest.user = current_user
     end
   end
 end
