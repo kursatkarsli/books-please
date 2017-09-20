@@ -61,8 +61,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Use FriendlyId for utilizing easy-to-read ids
 gem 'friendly_id', '~> 5.2', '>= 5.2.1'
+gem 'goodreads', '~> 0.4.3'
 
-# Use Haml for generating views 
+# Use Haml for generating views
 gem 'haml'
 # Use jQuery as a JS framework
 gem 'jquery-rails'
