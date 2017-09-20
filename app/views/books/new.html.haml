@@ -15,3 +15,13 @@
         %td= work.best_book.author.name
         %td= work.average_rating
         %td= link_to "Add", books_path(gr_id: work.best_book.id), method: :post
+
+%h4 Insert manually
+%p You can add the book by providing its id in GoodReads.
+= form_tag(books_path) do
+  .form-row
+    .col-md-4
+      = label_tag :gr_id, 'GoodReads ID'
+      = text_field_tag :gr_id, '', class: 'form-control'
+  .form-row
+    = submit_tag 'Add', class: 'btn btn-primary m-1'

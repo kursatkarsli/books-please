@@ -17,11 +17,10 @@
       %dd.col-md-10= @book.author
       %dt.col-md-2 Pages
       %dd.col-md-10= @book.pages
-      %dt.col-md-2 Description
       %dd.mx-3.small.text-justify= @book.description.html_safe
 
     .row
-      = link_to "Delete book", '', class: 'btn btn-danger m-2', 'data-toggle': :modal, 'data-target': '#deleteModal'
+      = link_to "Delete book", '', class: 'btn btn-danger mx-3', 'data-toggle': :modal, 'data-target': '#deleteModal'
 
     -# .row
     -#   = link_to "Back", books_path, class: 'm-2'
@@ -30,7 +29,7 @@
   .modal-dialog{role: :document}
     .modal-content
       .modal-header
-        %h5.modal-title= 'Deleting the book'
+        %h5.modal-title= 'Delete the book'
         %button.close{type: :button, 'data-dismiss': :modal, 'aria-label': 'Close'}
           %span{'aria-hidden': :true} &times;
       .modal-body
