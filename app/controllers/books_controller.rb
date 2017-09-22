@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :new, :create, :destroy, :toggle]
   before_action :set_book, only: [:show, :destroy, :toggle]
+  
   def index
     @favs = Book.favourites(current_user)
     @books = Book.all

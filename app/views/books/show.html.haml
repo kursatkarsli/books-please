@@ -19,11 +19,9 @@
       %dd.col-md-10= @book.pages
       %dd.mx-3.text-justify= @book.description.html_safe
 
-    .row
-      = link_to "Delete book", '', class: 'btn btn-danger mx-3', 'data-toggle': :modal, 'data-target': '#deleteModal'
-
-    -# .row
-    -#   = link_to "Back", books_path, class: 'm-2'
+    - if user_signed_in?
+      .row
+        = link_to "Delete book", '', class: 'btn btn-danger mx-3', 'data-toggle': :modal, 'data-target': '#deleteModal'
 
 .modal.fade#deleteModal
   .modal-dialog{role: :document}
