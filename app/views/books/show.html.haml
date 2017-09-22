@@ -29,7 +29,7 @@
   .modal-dialog{role: :document}
     .modal-content
       .modal-header
-        %h5.modal-title= 'Delete the book'
+        %h5.modal-title Delete the book
         %button.close{type: :button, 'data-dismiss': :modal, 'aria-label': 'Close'}
           %span{'aria-hidden': :true} &times;
       .modal-body
@@ -38,5 +38,5 @@
           %strong>= @book.title
           ?
       .modal-footer
-        = link_to "Delete book", book_path(@book), method: :delete, class: 'btn btn-danger'        
+        = link_to "Delete book", book_path(@book), method: :delete, class: 'btn btn-danger'
         %button.btn.btn-secondary{type: :button, 'data-dismiss': :modal} Cancel

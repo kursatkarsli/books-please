@@ -1,0 +1,19 @@
+#background
+
+.modal.fade#signinModal
+  .modal-dialog.modal-sm{role: :document}
+    .modal-content
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .modal-header
+          %h5.modal-title Login
+          %button.close{type: :button, 'data-dismiss': :modal, 'aria-label': 'Close'}
+            %span{'aria-hidden': :true} &times;
+        .modal-body
+          .form-group
+            = f.email_field :email, autofocus: true, class: 'form-control'
+            = f.password_field :password, autocomplete: 'off', class: 'form-control'
+          .form-group.mb-0
+            = f.check_box :remember_me
+            = f.label :remember_me, class: 'mb-0'
+        .modal-footer
+          = f.submit 'Log in', class: 'btn btn-primary'

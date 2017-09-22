@@ -14,8 +14,8 @@
 
     = render "shared/navbar"
 
-    .container.my-3
+    .container.py-3
       = yield
 
-      %footer.text-center.fixed-bottom
-        %small.text-muted Books please! v#{BooksPlease::Application::VERSION}
+  %footer.text-center.fixed-bottom
+    %small.text-muted Books please! v#{BooksPlease::Application::VERSION}
