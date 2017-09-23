@@ -14,8 +14,8 @@
 
     = render "shared/navbar"
 
-    .container.my-3
+    .container.pt-3.pb-5
       = yield
 
-      %footer.text-center.fixed-bottom
-        %small.text-muted Books please! v#{BooksPlease::Application::VERSION}
+  %footer.text-center.fixed-bottom
+    %small.text-muted Books please! v#{BooksPlease::Application::VERSION}
