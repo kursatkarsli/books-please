@@ -1,6 +1,6 @@
 %h2= @user.name
 
-= image_tag @user.avatar_img, alt: @user.name
+= image_tag @user.avatar_img, alt: @user.name, class: 'border border-secondary'
 
 -if @favs.count > 0
   %h2 Favourite books
