@@ -11,33 +11,13 @@ class BooksController < ApplicationController
 
   def new
     params[:query] ||= 'Ekożona'
-
-    client = Goodreads.new
-    search = client.search_books(params[:query])
-    results = search.results.work
-
-    @works = results.is_a?(Array) ? results : [results]
+    @proposals = GoodreadsService.new.search_book params[:query]
   end
 
   def create
-    good_id = params[:gr_id]
-    client = Goodreads.new
-    good_book = client.book(good_id)
-    good_author = good_book.authors.author
-
-    @book = Book.new(
-      title: good_book.title,
-      author: good_author.is_a?(Array) ?
-        good_author.first.name :
-        good_author.name,
-      pages: good_book.num_pages,
-      description: good_book.description,
-      large_image_url: good_book.image_url.gsub!(/m(?=\/\d+)/, 'l'),
-      small_image_url: good_book.image_url,
-    )
-
-    if @book.save
-      redirect_to @book
+    book = GoodreadsService.new.find_book_by params[:gr_id]
+    if book.save
+      redirect_to book
     else
       render 'new'
     end

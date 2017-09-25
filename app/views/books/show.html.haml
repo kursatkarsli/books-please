@@ -3,7 +3,7 @@
 .row
   .col-md-4.col-xs-12
     %div.book-image
-      = image_tag @book.large_image_url, alt: @book.title, class: "border border-secondary w-100"
+      = image_tag @book.large_image_url, alt: @book.title, class: 'border border-secondary w-100'
       %span.favourite= favourite_link
       %span.status= status_tag
 
