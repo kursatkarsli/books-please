@@ -1,0 +1,28 @@
+%h2 Search: #{params[:query]}
+
+- if @proposals.count > 0
+  %table.table
+    %thead
+      %th
+      %th Title
+      %th Author
+      %th Rating
+      %th
+    %tbody
+      - @proposals.each do |p|
+        %tr.proposal
+          %td= image_tag p.image_url, class: 'border border-secondary'
+          %td= link_to p.title, "https://www.goodreads.com/book/show/#{p.id}"
+          %td= p.author
+          %td= p.rating
+          %td= link_to "Add", books_path(gr_id: p.id), method: :post
+- else
+  %p.lead No results found.
+
+%h4 Insert manually
+%p You can add the book by providing its GoodReads' id.
+= form_tag(books_path, class: 'form-inline') do
+  .form-row
+    = label_tag :gr_id, 'GoodReads ID', class: 'col-form-label'
+    = text_field_tag :gr_id, '',autocomplete: false, class: 'form-control'
+    = submit_tag 'Add', class: 'btn btn-primary mx-2'

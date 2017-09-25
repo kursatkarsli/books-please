@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+ready = ->
+  $('#addModal').on 'shown.bs.modal', ->
+    $('#query').focus()
+
+  setTimeout("$('#signinModal').modal()", 500)
+
+  $("#alert").delay(1500).fadeTo(500, 0).slideUp(500)
+
+$( document ).on('turbolinks:load', ready)

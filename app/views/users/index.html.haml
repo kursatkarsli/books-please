@@ -1,0 +1,9 @@
+%h2 Friends
+
+- @users.each do |user|
+  %p
+    = image_tag user.avatar_img, class: 'avatar'
+    - if user_signed_in?
+      = link_to user.name, user_path(user)
+    - else
+      = user.name

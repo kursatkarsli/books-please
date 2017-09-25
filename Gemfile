@@ -47,6 +47,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use sqlite3 as the database for Active Record in development
   gem 'sqlite3'
+  gem 'rack-livereload'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 group :production do
@@ -57,7 +59,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Use Haml for generating views 
+gem 'devise', '~> 4.3'
+
+# Use FriendlyId for utilizing easy-to-read ids
+gem 'friendly_id', '~> 5.2', '>= 5.2.1'
+gem 'goodreads', '~> 0.4.3'
+
+# Use Haml for generating views
 gem 'haml'
-# Use Bootstrap as CSS framework
+# Use jQuery as a JS framework
+gem 'jquery-rails'
+# Use Bootstrap as a CSS framework
 gem 'bootstrap', '~> 4.0.0.beta'
+# Use Font Awesome
+gem 'font-awesome-sass'

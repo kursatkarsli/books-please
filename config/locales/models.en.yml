@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      book:
+        medium:
+          paper_book: "Paper book"
+          kindle: "Kindle"
+          audiobook: "Audiobook"
